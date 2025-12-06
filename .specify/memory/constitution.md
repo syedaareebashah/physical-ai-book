@@ -1,28 +1,7 @@
 <!-- Sync Impact Report:
-Version Change: 1.1.0 -> 6.0.1
-Modified Principles:
-- Replaced previous principles with new structure.
-Added Sections:
-- Design Philosophy
-- Before Creating Any Content, Analyze
-- Core Principles for All Reasoning
-- Preamble: What This Book Is
-- I. The Paradigm Shift: From Reusable Code to Reusable Intelligence
-- II. Agent Context Requirements (Intelligence Accumulation)
-- Context Accumulation Framework
-- Context Handoff Protocol
-- Appendices: Operational Rules (short)
-Removed Sections:
-- Physical AI & Humanoid Robotics Constitution
-- Core Principles (Embodied Intelligence & Real-World Functionality, Test-First, Integration Testing, Observability)
-- Theme
-- Goal
-- Quarter Overview (Module 1-4)
-- Capstone Project
-- Assessment & Rubric
-- Safety, Ethics, and Reproducibility
-- Appendices (Recommended)
-- Notes
+Version Change: 7.0.0 -> 8.0.0
+Modified Principles: Added Design Principles, Technical Stack, Deployment, and Quality Requirements sections
+Added Sections: Design Principles, Content Structure (enhanced), Technical Stack, Deployment, Quality Requirements
 Templates requiring updates:
 - .specify/templates/plan-template.md: ⚠ pending
 - .specify/templates/spec-template.md: ⚠ pending
@@ -39,158 +18,218 @@ Templates requiring updates:
 - .specify/templates/commands/sp.tasks.md: ⚠ pending
 Follow-up TODOs: None
 -->
-# AI Native Software Development Book — Constitution
+# Physical AI & Humanoid Robotics Textbook Constitution
 
-**Version:** 6.0.1 (PATCH — Meta-Commentary Prohibition)
+**Version:** 8.0.0 (MAJOR — Addition of design, technical stack, deployment, and quality requirements)
 
 **Ratified:** 2025-01-17
 
-**Last Amended:** 2025-11-18
+**Last Amended:** 2025-12-06
 
-**Scope:** Educational content governance (book chapters, lessons, exercises)
+**Scope:** Educational content governance for the Physical AI & Humanoid Robotics textbook.
 
-**Audience:** AI Agents (Super-Orchestra, chapter-planner, content-implementer, validation-auditor)
-
----
-
-## Design Philosophy
-
-This constitution activates *reasoning mode* in AI agents rather than triggering prediction mode. It provides decision frameworks, not rigid rules.
-
-### Constitutional Persona: You Are an Educational Systems Architect
-
-You are not a rule-following executor. Think like a distributed systems engineer designing curriculum architecture: identify decision points, design for scalability, and ensure component interactions produce desired emergent behaviors.
-
-**Core Capability Statement:**
-AI-native educational experiences must avoid converging to low-value defaults (lecture-first, isolated examples, taxonomy-only organization). Design for reasoning activation, not for rote consumption.
+**Audience:** Textbook authors, content creators, AI Agents involved in content generation, general public.
 
 ---
 
-## Before Creating Any Content, Analyze
+## Educational Principles
 
-1. **Decision Point Mapping**
+### Beginner-Friendly Yet Technically Rigorous
+Content MUST be accessible to beginners while maintaining a high level of technical accuracy and depth. Concepts SHOULD be introduced with foundational knowledge before progressing to advanced topics.
+Rationale: Ensures a broad audience can engage with the material and build a strong, accurate understanding.
 
-   * What critical decisions does this chapter require?
-   * Which decisions need student reasoning vs agent execution?
-   * Which decision frameworks help students make those choices effectively?
+### Real-World Analogies First
+Each new technical concept MUST be introduced with clear, relatable real-world analogies before delving into specific technical details and code.
+Rationale: Facilitates intuitive understanding and bridges the gap between abstract concepts and practical applications.
 
-2. **Reasoning Activation Assessment**
+### Progressive Learning
+The curriculum MUST follow a clear progression from simple to intermediate to advanced topics. Each module and chapter SHOULD build upon previously introduced concepts.
+Rationale: Supports a structured learning path, preventing cognitive overload and reinforcing knowledge incrementally.
 
-   * Does this content ask students to *REASON* about concepts or merely *PREDICT* patterns?
-   * How should teaching methods shift across Layers 1→4 (novice→expert)?
-   * What meta-awareness do students need to evaluate their own learning and agent outputs?
+### Tested and Runnable Code Examples
+Every code example provided MUST be thoroughly tested, demonstrably runnable, and accompanied by instructions for execution.
+Rationale: Guarantees reliability, enables hands-on learning, and reduces friction for students attempting to reproduce results.
 
-3. **Intelligence Accumulation**
-
-   * What accumulated context from previous chapters informs this design?
-   * How does this chapter contribute reusable intelligence for future chapters?
-   * What patterns should crystallize into skills/subagents?
-
----
-
-## Core Principles for All Reasoning
-
-* **Right Altitude Balance**
-
-  * Too Low: rigid counts and prescriptive steps.
-  * Too High: vague exhortations.
-  * Just Right: decision frameworks with clear criteria and concrete applications.
-
-* **Decision Frameworks Over Rules**
-
-  * Example: Not "NEVER show code before spec." Rather: "When introducing implementation patterns, evaluate whether specification clarity exists; if not, present spec-first to enable critical evaluation."
-
-* **Meta-Awareness Against Convergence**
-
-  * Vary teaching modalities: Socratic dialogue, discovery learning, spec-first projects, error analysis, collaborative debugging.
+### Hands-on Exercises
+Hands-on exercises MUST follow each major concept explanation, providing practical application of the learned material. These exercises SHOULD be designed to reinforce understanding and build practical skills.
+Rationale: Solidifies theoretical knowledge through practical application and develops problem-solving capabilities.
 
 ---
 
-## Preamble: What This Book Is
+## Design Principles
 
-**Title:** AI Native Software Development: CoLearning Agentic AI with Python and TypeScript — The AI & Spec Driven Way
+### Match ai-native.panaversity.org Aesthetic
+All website and interface design MUST match the ai-native.panaversity.org aesthetic exactly, with modern, clean, professional design featuring gradients.
+Rationale: Ensures consistent branding and professional appearance aligned with the established standard.
 
-**Purpose:** Teach AI-native software development methodology where specification-writing is the primary skill and AI agents handle implementation.
+### Fully Responsive Mobile-First Approach
+All content and interfaces MUST be designed with a fully responsive mobile-first approach.
+Rationale: Ensures accessibility and optimal experience across all device types and screen sizes.
 
-**Target Audience:**
+### Dark Mode as Default
+Dark mode MUST be the default theme with a light mode toggle available.
+Rationale: Provides optimal readability and user preference accommodation while reducing eye strain.
 
-* Complete beginners entering programming in the agentic era.
-* Traditional developers transitioning to spec-first workflows.
-* AI-curious professionals seeking practical, agentic software engineering skills.
+### Smooth Animations and Transitions
+All user interfaces MUST incorporate smooth animations and transitions for enhanced user experience.
+Rationale: Creates a polished, professional feel and improves user engagement.
 
-**Core Thesis:** Reusable intelligence (specifications, agent architectures, skills) replaces reusable code as the primary artifact of software development.
-
----
-
-## I. The Paradigm Shift: From Reusable Code to Reusable Intelligence
-
-**Transformational Summary**
-
-* Old: Code libraries were the unit of reuse.
-* New: Specifications, agent architectures, and skills are the units of reuse.
-
-**What This Book Teaches**
-
-* Specification mastery: capture intent as executable contracts.
-* Agent architectures: design subagents that encode domain expertise.
-* Skills and patterns: create organizational capability that compounds across projects.
-
-**"Specs Are the New Syntax"**
-
-* Primary skill shifts from typing correct syntax to articulating clear, testable requirements that AI agents can execute.
+### WCAG 2.1 AA Compliance
+All content and interfaces MUST be accessible and compliant with WCAG 2.1 AA standards.
+Rationale: Ensures inclusive access for users with disabilities and meets accessibility best practices.
 
 ---
 
-## II. Agent Context Requirements (Intelligence Accumulation)
+## Technical Standards
 
-**Core Principle:** Treat curriculum design like dependency analysis in distributed systems.
+### Python with rclpy for ROS 2
+All ROS 2 related code examples and implementations MUST exclusively use Python with the `rclpy` client library.
+Rationale: Ensures consistency across the textbook and focuses on a widely adopted and accessible programming language for robotics.
 
-Before authoring, reason about:
+### PEP 8 Style Guide Adherence
+All Python code, including examples and exercise solutions, MUST strictly follow the PEP 8 style guide for formatting and conventions.
+Rationale: Promotes readability, maintainability, and consistency in the codebase.
 
-* Constitutional governance (this document).
-* Domain structure (chapter-index.md, part-level progression).
-* Existing specifications and patterns.
-* Skills library and research foundation.
+### Consistent Naming Conventions
+Naming conventions for variables, functions, classes, and files MUST be consistent across all modules and chapters of the textbook.
+Rationale: Improves code clarity, reduces cognitive load for learners, and fosters good programming practices.
 
-**Quality Tiers & Research Depth**
+### Comprehensive Code Comments
+Code examples MUST include comprehensive, clear, and concise comments explaining non-obvious logic, complex sections, and design choices.
+Rationale: Enhances understanding for learners and provides insight into the rationale behind implementations.
 
-* Adequate: quick iteration (1–2 hours).
-* Market-defining: comprehensive research (15–30 hours).
-
-**Context Flow Through Agent Chain**
-
-* Super-orchestra → Chapter-planner → Lesson-writer → Technical-reviewer.
-* Each agent inherits intelligence, enriches it, and passes it forward.
-
----
-
-## Context Accumulation Framework
-
-**Start-of-Work Checklist**
-
-1. **Constitutional Alignment**: Which principles govern this chapter? Which stage progression (1→4) applies? Which complexity tier (A1–C2)?
-2. **Prerequisite Intelligence**: What must students already know? What requires re-introduction?
-3. **Research Depth Decision**: Is this chapter market-defining, incremental, or pattern-based? Choose research investment accordingly.
-4. **Reusable Intelligence Harvest**: Which skills transfer forward? Which new skills must be produced?
-
-**Decision Framework: When to Invest in Comprehensive Research**
-
-* Ask: Market significance, novelty, complexity, longevity. If ≥3 answers "yes" → invest 15–30 hours; if 1–2 → 5–10 hours; if 0 → 1–2 hours.
+### Gazebo and Isaac Sim for Simulations
+All simulations and simulated environments MUST be tested and demonstrated using both Gazebo and NVIDIA Isaac Sim where applicable.
+Rationale: Exposes students to industry-standard simulation platforms and allows for comparison of their features and workflows.
 
 ---
 
-## Context Handoff Protocol
+## Content Structure
 
-* **When receiving context**: cite consulted docs (e.g., spec.md, plan.md), identify what informed decisions, and document gaps.
-* **When passing context**: make implicit decisions explicit, provide rationale, and flag uncertainties for downstream validation.
+### Module-Based Learning
+Each module MUST follow a structured sequence: Theory → Implementation → Exercise → Challenge.
+Rationale: Provides a comprehensive learning cycle, moving from foundational understanding to practical application, reinforcement, and advanced problem-solving.
 
-**Self-monitor:** If the next agent would produce disconnected work without your context, the handoff is incomplete.
+### Visual Learning Emphasis
+Architectural concepts, data flows, and complex system interactions MUST be explained with clear, high-quality diagrams and visual aids.
+Rationale: Enhances comprehension, especially for complex robotics concepts, and caters to diverse learning styles.
+
+### Consistent Formatting
+The textbook MUST maintain consistent formatting throughout, including dedicated sections for concept boxes, clearly delineated code blocks, and prominent warning/caution notes.
+Rationale: Improves readability, guides student attention, and creates a professional, cohesive learning experience.
+
+### Cross-Referencing
+Relevant concepts and sections MUST be cross-referenced throughout the textbook to highlight connections and facilitate deeper understanding.
+Rationale: Reinforces interdependencies between topics and enables students to navigate related information easily.
+
+### Technical Glossary
+A comprehensive glossary of all technical terms and acronyms used in the textbook MUST be provided.
+Rationale: Serves as a quick reference for students and ensures a shared understanding of specialized vocabulary.
+
+### Progressive Learning: Theory → Practice → Project
+Each module and chapter MUST follow the progressive learning structure: Theory → Practice → Project.
+Rationale: Ensures students understand concepts before applying them, then consolidate learning through comprehensive projects.
+
+### Chapter Structure: Objectives, Content, Exercises, Summary
+Each chapter MUST follow the structure: Learning Objectives → Content → Exercises → Summary.
+Rationale: Provides a consistent learning experience with clear expectations and reinforcement.
+
+### Sidebar Navigation with Progress Tracking
+All content MUST include sidebar navigation with progress tracking capabilities.
+Rationale: Enables students to navigate efficiently and track their learning progress.
 
 ---
 
-## Appendices: Operational Rules (short)
+## Technical Stack
 
-1. **Metadata Requirements:** Every chapter must include explicit metadata: prerequisites, complexity tier, research tier, estimated authoring effort, and testable learning objectives.
-2. **Artifact Types:** Distinguish between ephemeral artifacts (exercise prompts, examples) and durable intelligence (spec templates, agent prompt libraries, skill blueprints).
-3. **Validation:** Each chapter must include at least one reproducible evaluation (unit-test style spec test, automated agent-run checklist, or peer-reviewed rubric).
-4. **No Meta-Commentary:** Agents must avoid meta-narration about "how" they reason, focusing instead on producing explicit artifacts and decision rationales.
+### Docusaurus v3 + TypeScript Foundation
+All documentation and content MUST be built with Docusaurus v3.5+ and TypeScript.
+Rationale: Provides a modern, extensible platform with strong type safety and documentation capabilities.
+
+### MDX for Interactive Content
+All interactive content MUST be implemented using MDX.
+Rationale: Enables rich, interactive content with React components embedded in Markdown.
+
+### React 18+ for Custom Components
+All custom components MUST be built with React 18+.
+Rationale: Leverages modern React features and ensures compatibility with the latest ecosystem.
+
+### Tailwind CSS for Styling
+All styling MUST be implemented using Tailwind CSS.
+Rationale: Provides utility-first CSS framework for rapid, consistent styling.
+
+### Mermaid.js for Diagrams
+All technical diagrams MUST be created using Mermaid.js.
+Rationale: Enables programmatic creation of diagrams with version control and consistency.
+
+### Algolia DocSearch for Search
+All documentation MUST include Algolia DocSearch for search functionality.
+Rationale: Provides fast, accurate search across the entire documentation set.
+
+---
+
+## Deployment
+
+### GitHub Pages Deployment
+The documentation website MUST be deployed using GitHub Pages.
+Rationale: Provides reliable, free hosting with seamless integration with GitHub workflows.
+
+### Automatic Builds on Main Branch Push
+Automatic builds MUST be triggered on main branch pushes.
+Rationale: Ensures content is always up-to-date without manual intervention.
+
+### Preview Deployments for PRs
+Preview deployments MUST be available for all pull requests.
+Rationale: Enables review of changes in a live environment before merging.
+
+### Custom Domain Support
+The deployment MUST support custom domain configuration.
+Rationale: Allows for professional branding and URL management.
+
+### Performance Optimization (Lighthouse > 90)
+All deployments MUST achieve Lighthouse performance scores above 90.
+Rationale: Ensures fast loading times and optimal user experience.
+
+---
+
+## Quality Requirements
+
+### All Links Validated
+All links in the documentation MUST be validated and functional.
+Rationale: Ensures users can access all referenced resources without encountering broken links.
+
+### Mobile Responsive Testing
+All content MUST pass mobile responsive testing across common device sizes.
+Rationale: Ensures optimal experience across all devices and screen sizes.
+
+### Cross-Browser Compatibility
+All content MUST be compatible across major browsers (Chrome, Firefox, Safari, Edge).
+Rationale: Ensures broad accessibility and consistent experience across different browsers.
+
+### SEO Optimization
+All content MUST be optimized for search engine visibility.
+Rationale: Increases discoverability and reach of the educational content.
+
+### Fast Loading Times
+All pages MUST load within 3 seconds on average mobile connections.
+Rationale: Ensures optimal user experience and reduces bounce rates.
+
+### Technical Accuracy Verification
+All technical information, code implementations, and experimental results MUST be verified for accuracy through rigorous testing, simulation, or expert review.
+Rationale: Guarantees the reliability of the educational content and builds trust with the learners.
+
+### Clear Learning Objectives
+Each chapter and major section MUST have explicitly stated, measurable learning objectives.
+Rationale: Provides students with clear expectations for what they will learn and allows them to track their progress.
+
+### Explicit Prerequisites
+Prerequisites for each module, chapter, or major section MUST be clearly and explicitly stated.
+Rationale: Helps students assess their readiness for new material and guides them to foundational content if needed.
+
+### Estimated Exercise Time
+An estimated time for completion MUST be provided for each hands-on exercise and challenge.
+Rationale: Assists students in managing their study time and provides a realistic expectation of effort required.
+
+### Links to Official Documentation
+Relevant sections MUST include direct links to official documentation for tools, libraries, and external resources.
+Rationale: Encourages students to explore primary sources, provides avenues for deeper learning, and ensures access to the most up-to-date information.
