@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
+import AnimatedSection from '@site/src/components/AnimatedSection';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import LearningPath from '@site/src/components/LearningPath';
 import ComparisonTable from '@site/src/components/ComparisonTable';
@@ -29,17 +30,17 @@ function HomepageHeader() {
               <Link
                 className="button button--secondary button--lg"
                 to="/docs/intro">
-                Start Learning Physical AI - 5min ⏱️
+                Start Learning Physical AI
               </Link>
               <Link
                 className="button button--primary button--lg"
                 to="/docs/module1-ros2/introduction">
-                Begin with ROS 2 - 10min ⏱️
+                Begin with ROS 2 
               </Link>
             </div>
           </div>
            <div className={styles.heroImage}>
-            <img src="https://images.unsplash.com/photo-1581092580497-c3a42146b952?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Humanoid Robot" />
+            <img src="/img/homepage.png" alt="Humanoid Robot" />
           </div>
         </div>
       </div>
@@ -55,72 +56,80 @@ export default function Home(): JSX.Element {
       description="Comprehensive curriculum for Physical AI - AI systems that function in reality and comprehend physical laws">
       <HomepageHeader />
       <main>
-        <section className={styles.featuresSection}>
-          <div className="container">
-            <div className="row">
-              <div className="col col--4">
-                <div className={clsx(styles.featureCard, styles.cardHover)}>
-                  <div className={styles.featureIcon}>
-                    <img src="https://images.unsplash.com/photo-1547127796-0b-6f85e32b62ad?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Robotic Nervous System" />
+        <AnimatedSection>
+          <section className={styles.featuresSection}>
+            <div className="container">
+              <div className="row">
+                <div className="col col--4">
+                  <div className={clsx(styles.featureCard, styles.cardHover)}>
+                    {/* <div className={styles.featureIcon}>
+                      <img src="img/homepage" alt="Robotic Nervous System" />
+                    </div> */}
+                    <div className={styles.featureCardContent}>
+                      <h3>Robotic Nervous System</h3>
+                      <p>Learn ROS 2 fundamentals, nodes, topics, and services for controlling humanoid robots with rclpy.</p>
+                    </div>
                   </div>
-                  <div className={styles.featureCardContent}>
-                    <h3>Robotic Nervous System</h3>
-                    <p>Learn ROS 2 fundamentals, nodes, topics, and services for controlling humanoid robots with rclpy.</p>
+                </div>
+                <div className="col col--4">
+                  <div className={clsx(styles.featureCard, styles.cardHover)}>
+                    <div className={styles.featureIcon}>
+                      <img src="https://images.unsplash.com/photo-1611606063065-ee7946f0b34a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Digital Twin" />
+                    </div>
+                    <div className={styles.featureCardContent}>
+                      <h3>Digital Twin</h3>
+                      <p>Master physics simulation in Gazebo and high-fidelity rendering in Unity for realistic environments.</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="col col--4">
+                  <div className={clsx(styles.featureCard, styles.cardHover)}>
+                    {/* <div className={styles.featureIcon}>
+                      <img src="https://images.unsplash.com/photo-1527430222751-9149f7253b73?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="AI-Robot Brain" />
+                    </div> */}
+                    <div className={styles.featureCardContent}>
+                      <h3>AI-Robot Brain</h3>
+                      <p>Explore NVIDIA Isaac for advanced perception, VSLAM, and accelerated navigation systems.</p>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="col col--4">
-                <div className={clsx(styles.featureCard, styles.cardHover)}>
-                  <div className={styles.featureIcon}>
-                    <img src="https://images.unsplash.com/photo-1611606063065-ee7946f0b34a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Digital Twin" />
-                  </div>
-                  <div className={styles.featureCardContent}>
-                    <h3>Digital Twin</h3>
-                    <p>Master physics simulation in Gazebo and high-fidelity rendering in Unity for realistic environments.</p>
+              <div className="row" style={{marginTop: '2rem'}}>
+                <div className="col col--4 col--offset-2">
+                  <div className={clsx(styles.featureCard, styles.cardHover)}>
+                    {/* <div className={styles.featureIcon}>
+                      <img src="https://images.unsplash.com/photo-1554224155-169544351720?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Vision-Language-Action" />
+                    </div> */}
+                    <div className={styles.featureCardContent}>
+                      <h3>Vision-Language-Action</h3>
+                      <p>Converge LLMs with robotics: Voice-to-Action using OpenAI Whisper and multimodal AI.</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="col col--4">
-                <div className={clsx(styles.featureCard, styles.cardHover)}>
-                  <div className={styles.featureIcon}>
-                    <img src="https://images.unsplash.com/photo-1527430222751-9149f7253b73?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="AI-Robot Brain" />
-                  </div>
-                  <div className={styles.featureCardContent}>
-                    <h3>AI-Robot Brain</h3>
-                    <p>Explore NVIDIA Isaac for advanced perception, VSLAM, and accelerated navigation systems.</p>
+                <div className="col col--4">
+                  <div className={clsx(styles.featureCard, styles.cardHover)}>
+                    {/* <div className={styles.featureIcon}>
+                      <img src="https://images.unsplash.com/photo-1571383323975-92337171b39a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Physical AI Focus" />
+                    </div> */}
+                    <div className={styles.featureCardContent}>
+                      <h3>Physical AI Focus</h3>
+                      <p>Bridging the gap between digital intelligence and physical reality with embodied systems.</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="row" style={{marginTop: '2rem'}}>
-              <div className="col col--4 col--offset-2">
-                <div className={clsx(styles.featureCard, styles.cardHover)}>
-                  <div className={styles.featureIcon}>
-                    <img src="https://images.unsplash.com/photo-1554224155-169544351720?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Vision-Language-Action" />
-                  </div>
-                  <div className={styles.featureCardContent}>
-                    <h3>Vision-Language-Action</h3>
-                    <p>Converge LLMs with robotics: Voice-to-Action using OpenAI Whisper and multimodal AI.</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col col--4">
-                <div className={clsx(styles.featureCard, styles.cardHover)}>
-                  <div className={styles.featureIcon}>
-                    <img src="https://images.unsplash.com/photo-1571383323975-92337171b39a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Physical AI Focus" />
-                  </div>
-                  <div className={styles.featureCardContent}>
-                    <h3>Physical AI Focus</h3>
-                    <p>Bridging the gap between digital intelligence and physical reality with embodied systems.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <HomepageFeatures />
-        <LearningPath />
-        <ComparisonTable />
+          </section>
+        </AnimatedSection>
+        <AnimatedSection>
+          <HomepageFeatures />
+        </AnimatedSection>
+        <AnimatedSection>
+          <LearningPath />
+        </AnimatedSection>
+        <AnimatedSection>
+          <ComparisonTable />
+        </AnimatedSection>
         <section className={styles.ctaSection}>
           <div className="container text--center padding-vert--xl">
             <Heading as="h2">Ready to Build Intelligent Robots?</Heading>
