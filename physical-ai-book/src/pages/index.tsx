@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import AnimatedSection from '@site/src/components/AnimatedSection';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import LearningPath from '@site/src/components/LearningPath';
 import ComparisonTable from '@site/src/components/ComparisonTable';
@@ -56,7 +55,7 @@ export default function Home(): JSX.Element {
       description="Comprehensive curriculum for Physical AI - AI systems that function in reality and comprehend physical laws">
       <HomepageHeader />
       <main>
-        <AnimatedSection>
+        
           <section className={styles.featuresSection}>
             <div className="container">
               <div className="row">
@@ -120,16 +119,10 @@ export default function Home(): JSX.Element {
               </div>
             </div>
           </section>
-        </AnimatedSection>
-        <AnimatedSection>
+     
           <HomepageFeatures />
-        </AnimatedSection>
-        <AnimatedSection>
           <LearningPath />
-        </AnimatedSection>
-        <AnimatedSection>
           <ComparisonTable />
-        </AnimatedSection>
         <section className={styles.ctaSection}>
           <div className="container text--center padding-vert--xl">
             <Heading as="h2">Ready to Build Intelligent Robots?</Heading>
