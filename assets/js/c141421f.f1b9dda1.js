@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkphysical_ai_book=globalThis.webpackChunkphysical_ai_book||[]).push([[957],{936:a=>{a.exports=JSON.parse('{"name":"docusaurus-theme-search-algolia","id":"default"}')}}]);
