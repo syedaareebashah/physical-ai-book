@@ -1,0 +1,97 @@
+.comparisonSection {
+  padding: 2rem 0;
+  background-color: var(--ifm-color-emphasis-0);
+}
+
+[data-theme='dark'] .comparisonSection {
+  background-color: var(--ifm-background-color);
+}
+
+.sectionTitle {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 600;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sectionSubtitle {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--ifm-color-emphasis-600);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tableContainer {
+  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.comparisonTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.tableHeader {
+  padding: 1.2rem;
+  font-weight: 600;
+  text-align: left;
+  position: relative;
+}
+
+.traditionalHeader {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+  color: #333;
+}
+
+.physicalHeader {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.tableRow:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme='dark'] .tableRow:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.tableCell {
+  padding: 1rem 1.2rem;
+  vertical-align: top;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.traditionalCell {
+  border-right: 2px solid var(--ifm-color-emphasis-200);
+}
+
+.physicalCell {
+  background-color: rgba(102, 126, 234, 0.03);
+}
+
+[data-theme='dark'] .physicalCell {
+  background-color: rgba(102, 126, 234, 0.08);
+}
+
+.tableRow:last-child .tableCell {
+  border-bottom: none;
+}
+
+@media (max-width: 768px) {
+  .tableContainer {
+    font-size: 0.9rem;
+  }
+
+  .tableCell {
+    padding: 0.8rem;
+  }
+}
