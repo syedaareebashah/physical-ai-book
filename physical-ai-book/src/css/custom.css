@@ -49,10 +49,14 @@
 
 /* Glassmorphism navbar */
 .navbar {
+  height: 50px;
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
 }
 
 /* Enhanced hero banner for AI Native */
