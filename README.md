@@ -1,2 +1,7 @@
 # physical-ai-book
 Hackathon I: Create a Textbook for Teaching Physical AI &amp; Humanoid Robotics Course
+
+
+Physical AI & Humanoid Robotics
+Focus and Theme: AI Systems in the Physical World. Embodied Intelligence.
+Goal: Bridging the gap between the digital brain and the physical body. Students apply their AI knowledge to control Humanoid Robots in simulated and real-world environments.
