@@ -88,53 +88,6 @@ const config: Config = {
           position: 'left',
           label: 'Getting Started',
         },
-        {
-          type: 'dropdown',
-          label: 'Resources',
-          position: 'left',
-          items: [
-            {
-              type: 'doc',
-              docId: 'appendices/installation-guides',
-              label: 'Installation Guides',
-            },
-            {
-              type: 'doc',
-              docId: 'appendices/ros2-command-reference',
-              label: 'ROS 2 Commands',
-            },
-            {
-              type: 'doc',
-              docId: 'appendices/python-libraries-reference',
-              label: 'Python Libraries',
-            },
-            {
-              type: 'doc',
-              docId: 'appendices/resources-links',
-              label: 'Resources & Links',
-            },
-            {
-              type: 'doc',
-              docId: 'appendices/glossary',
-              label: 'Glossary',
-            },
-          ],
-        },
-        {
-          href: 'https://github.com/physical-ai-book/physical-ai-book',
-          label: 'GitHub',
-          position: 'right',
-        },
-        {
-          href: 'https://nvidia-isaac-ros.github.io/',
-          label: 'Isaac ROS',
-          position: 'right',
-        },
-        {
-          href: 'https://docs.ros.org/en/humble/',
-          label: 'ROS 2 Docs',
-          position: 'right',
-        },
       ],
     },
     footer: {
