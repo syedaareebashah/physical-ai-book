@@ -3,16 +3,46 @@
  * and scoped locally.
  */
 
-.heroBanner {
+.cyberpunkHero {
   padding: 4rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  color: var(--cyberpunk-light-text);
   background-size: 400% 400%;
-  animation: gradientShift 10s ease infinite;
+  animation: cyberGradientShift 10s ease infinite;
   transition: all 0.3s ease;
+  border: var(--cyberpunk-border);
+  box-shadow: var(--cyberpunk-border-glow);
+  position: relative;
+  z-index: 1;
+}
+
+.cyberpunkHero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: -1;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes cyberGradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(40px, 40px); }
 }
 
 @keyframes gradientShift {
@@ -36,6 +66,68 @@
   margin-top: 1.5rem;
 }
 
+.cyberpunk-button {
+  border-radius: 4px !important;
+  font-family: var(--ifm-font-family-base) !important;
+  font-weight: bold !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  position: relative !important;
+  overflow: hidden !important;
+  transition: all 0.3s ease !important;
+  border: var(--cyberpunk-border) !important;
+  box-shadow: var(--cyberpunk-border-glow) !important;
+  background: var(--cyberpunk-gradient-primary) !important;
+  color: #000 !important;
+  text-shadow: none !important;
+  padding: 1rem 2rem !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  border-radius: 50px !important;
+  transition: all 0.3s ease !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), var(--cyberpunk-border-glow) !important;
+}
+
+.cyberpunk-button:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), var(--cyberpunk-border-glow) !important;
+  text-decoration: none !important;
+  background: var(--cyberpunk-gradient-secondary) !important;
+}
+
+.cyberpunk-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 255, 65, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.cyberpunk-button:hover::before {
+  left: 100%;
+}
+
+.cyberpunkRobotContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  perspective: 1000px;
+}
+
 .button {
   margin: 0.5rem;
 }
@@ -57,9 +149,16 @@
 .heroText h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  text-shadow: 0 0 20px var(--ifm-color-primary);
   font-weight: 700;
-  animation: fadeIn 1s ease-in-out;
+  animation: fadeIn 1s ease-in-out, textGlow 2s ease-in-out infinite alternate;
+  color: var(--ifm-color-primary);
+  font-family: var(--ifm-font-family-base);
+}
+
+@keyframes textGlow {
+  from { text-shadow: 0 0 10px var(--ifm-color-primary); }
+  to { text-shadow: 0 0 30px var(--ifm-color-primary), 0 0 40px var(--ifm-color-primary); }
 }
 
 .heroText .hero__subtitle {
@@ -68,6 +167,8 @@
   opacity: 0.9;
   font-weight: 500;
   animation: fadeIn 1.5s ease-in-out;
+  color: var(--cyberpunk-light-text);
+  text-shadow: 0 0 10px rgba(224, 224, 224, 0.3);
 }
 
 @keyframes fadeIn {
@@ -93,14 +194,105 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  min-height: 300px;
 }
 
-.heroImage img {
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+.heroImageImg {
   max-width: 100%;
   height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   animation: float 6s ease-in-out infinite;
+  display: block;
+  max-height: 300px;
+}
+
+.cyberpunkRobotOverlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hide the old robot container since we're using the overlay */
+.cyberpunkRobotContainer {
+  display: none;
+}
+
+/* Cyberpunk features section styling */
+.featuresSection {
+  padding: 4rem 0;
+  background: var(--cyberpunk-dark-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.featuresSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    linear-gradient(rgba(0, 255, 65, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 65, 0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: -1;
+  animation: gridMove 25s linear infinite;
+}
+
+.featureCard {
+  background: rgba(30, 30, 30, 0.9);
+  border-radius: 12px;
+  box-shadow: var(--cyberpunk-glow);
+  transition: all 0.3s ease;
+  height: 100%;
+  text-align: center;
+  border: var(--cyberpunk-border);
+  overflow: hidden;
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+.featureCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--cyberpunk-gradient-primary);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.featureCard:hover::before {
+  transform: scaleX(1);
+}
+
+.featureCard:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: var(--cyberpunk-border-glow), 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.featureCard h3 {
+  color: var(--ifm-color-primary);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+}
+
+.featureCard p {
+  color: var(--cyberpunk-light-text);
+  line-height: 1.6;
 }
 
 @keyframes float {
@@ -265,16 +457,37 @@
 
 .ctaSection {
   padding: 4rem 0;
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  color: white;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  color: var(--cyberpunk-light-text);
   text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-top: var(--cyberpunk-border);
+  box-shadow: var(--cyberpunk-border-glow);
+}
+
+.ctaSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    linear-gradient(rgba(0, 255, 65, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 65, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: -1;
+  animation: gridMove 30s linear infinite;
 }
 
 .ctaSection h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  text-shadow: 0 0 20px var(--ifm-color-primary);
   font-weight: 700;
+  color: var(--ifm-color-primary);
+  animation: textGlow 2s ease-in-out infinite alternate;
 }
 
 .ctaSection p {
@@ -283,47 +496,53 @@
   opacity: 0.9;
   line-height: 1.6;
   font-weight: 500;
+  color: var(--cyberpunk-light-text);
+  text-shadow: 0 0 10px rgba(224, 224, 224, 0.3);
 }
 
+/* Override default button styles with cyberpunk variants */
 .button--primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 50px;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  background: var(--cyberpunk-gradient-primary) !important;
+  color: #000 !important;
+  border: var(--cyberpunk-border) !important;
+  padding: 1rem 2rem !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  border-radius: 50px !important;
+  transition: all 0.3s ease !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), var(--cyberpunk-border-glow) !important;
+  font-family: var(--ifm-font-family-base) !important;
 }
 
 .button--primary:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-  text-decoration: none;
+  transform: translateY(-5px) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), var(--cyberpunk-border-glow) !important;
+  text-decoration: none !important;
+  background: var(--cyberpunk-gradient-secondary) !important;
 }
 
 .button--secondary {
-  background: transparent;
-  color: white;
-  border: 2px solid white;
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 50px;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: transparent !important;
+  color: var(--ifm-color-primary) !important;
+  border: var(--cyberpunk-border) !important;
+  padding: 1rem 2rem !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  border-radius: 50px !important;
+  transition: all 0.3s ease !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  box-shadow: var(--cyberpunk-border-glow) !important;
+  font-family: var(--ifm-font-family-base) !important;
 }
 
 .button--secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-  text-decoration: none;
+  background: rgba(0, 255, 65, 0.1) !important;
+  transform: translateY(-5px) !important;
+  box-shadow: var(--cyberpunk-border-glow) !important;
+  text-decoration: none !important;
 }
 
 @media screen and (max-width: 1024px) {

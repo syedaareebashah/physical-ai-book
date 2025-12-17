@@ -6,8 +6,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Physical AI & Humanoid Robotics',
-  tagline: 'AI Systems in the Physical World | Embodied Intelligence | Bridging Digital Brains with Physical Bodies',
-  favicon: 'img/robot-icon.png',
+  tagline: 'AI Systems in the Physical World | Embodied Intelligence',
+  favicon: 'img/icono.svg',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -15,15 +15,16 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://physical-ai-book.github.io',
+  url: 'https://syedaareebashah.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<orgName>/'
-  baseUrl: '/',
+  // For GitHub pages deployment, it is often '/<projectName>/'
+  baseUrl: '/physical-ai-book/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'physical-ai-book', // Usually your GitHub org/user name.
+  organizationName: 'syedaareebashah', // Usually your GitHub org/user name.
   projectName: 'physical-ai-book', // Usually your repo name.
+  deploymentBranch: 'main',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -45,20 +46,36 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/physical-ai-book/physical-ai-book/edit/main/',
+            'https://github.com/syedaareebashah/physical-ai-book/edit/main/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/physical-ai-book/physical-ai-book/edit/main/',
+            'https://github.com/syedaareebashah/physical-ai-book/edit/main/',
         },
         theme: {
           customCss: './src/css/custom.css',
         },
       } satisfies Preset.Options,
     ],
+  ],
+
+  stylesheets: [
+    // Add the new editorial theme CSS
+    {
+      href: '/css/editorial-theme.css',
+      type: 'text/css',
+      crossorigin: undefined,
+    },
+    // Google Fonts for the editorial typography
+    {
+      href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;500;600;700&display=swap',
+      rel: 'stylesheet',
+      type: 'text/css',
+      crossorigin: undefined,
+    },
   ],
 
   themeConfig: {
@@ -87,6 +104,16 @@ const config: Config = {
           docId: 'intro',
           position: 'left',
           label: 'Getting Started',
+        },
+        {
+          to: '/chat',
+          label: 'AI Assistant',
+          position: 'right',
+        },
+        {
+          to: '/cyberpunk-demo',
+          label: 'Cyberpunk Demo',
+          position: 'right',
         },
       ],
     },

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Chatbot Widget</title>
+    <style>
+        /* Base styles for the chat widget */
+        #rag-chatbot-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            height: 500px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            font-family: Arial, sans-serif;
+            z-index: 10000;
+        }
+
+        /* Widget header */
+        .chat-header {
+            background-color: #4f46e5;
+            color: white;
+            padding: 15px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Chat messages container */
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* User message styling */
+        .user-message {
+            align-self: flex-end;
+            background-color: #db2777;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 10px;
+            max-width: 80%;
+        }
+
+        /* Bot message styling */
+        .bot-message {
+            align-self: flex-start;
+            background-color: #e5e7eb;
+            color: #374151;
+            padding: 8px 12px;
+            border-radius: 10px;
+            max-width: 80%;
+        }
+
+        /* Input area */
+        .chat-input-area {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #eee;
+            background-color: white;
+        }
+
+        /* Input field */
+        #chat-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        /* Send button */
+        #send-button {
+            padding: 10px 15px;
+            background-color: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #send-button:hover {
+            background-color: #4338ca;
+        }
+
+        /* Hide button */
+        #hide-widget {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        /* Loading indicator */
+        .loading {
+            align-self: flex-start;
+            font-style: italic;
+            color: #999;
+            padding: 8px 12px;
+        }
+
+        /* Error message */
+        .error-message {
+            align-self: flex-start;
+            color: #ef4444;
+            padding: 8px 12px;
+            background-color: #fee;
+            border-radius: 5px;
+            max-width: 80%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="rag-chatbot-widget">
+        <div class="chat-header">
+            <span>Book Assistant</span>
+            <button id="hide-widget" type="button">✕</button>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <div class="bot-message">Hello! I'm your book assistant. You can ask me questions about the book content or
+                select text and ask questions about it.</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Ask a question...">
+            <button id="send-button" type="button">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const API_BASE_URL = 'http://127.0.0.1:8000';
+
+        // DOM elements
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const sendButton = document.getElementById('send-button');
+        const hideButton = document.getElementById('hide-widget');
+        const widget = document.getElementById('rag-chatbot-widget');
+
+        // Store selected text
+        let selectedText = '';
+
+        // Function to capture selected text
+        function captureSelectedText() {
+            selectedText = window.getSelection().toString().trim();
+        }
+
+        document.addEventListener('mouseup', captureSelectedText);
+
+        // Function to add message to chat
+        function addMessageToChat(message, sender) {
+            const messageElement = document.createElement('div');
+
+            if (sender === 'user') {
+                messageElement.classList.add('user-message');
+            } else if (sender === 'bot') {
+                messageElement.classList.add('bot-message');
+            } else if (sender === 'error') {
+                messageElement.classList.add('error-message');
+            }
+
+            messageElement.textContent = message;
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Send message function
+        async function sendMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            addMessageToChat(message, 'user');
+            chatInput.value = '';
+
+            const loading = document.createElement('div');
+            loading.classList.add('loading');
+            loading.textContent = 'Thinking...';
+            loading.id = 'loading';
+            chatMessages.appendChild(loading);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/chat`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        query: message,
+                        selected_text: selectedText || ""
+                    })
+                });
+
+                loading.remove();
+
+                if (!response.ok) throw new Error(`Error ${response.status}`);
+
+                const data = await response.json();
+
+                // FINAL PERFECT FIX – YE DAAL DE
+                let botMessage = "Hello! How can I help you with the book today?";
+
+                if (data && data.response && typeof data.response === 'string') {
+                    botMessage = data.response;
+                } else if (data && typeof data === 'string') {
+                    botMessage = data;
+                } else if (data && data.text) {
+                    botMessage = data.text;
+                } else {
+                    botMessage = "I found relevant information from the book!";
+                }
+
+                addMessageToChat(botMessage, 'bot');
+                selectedText = '';
+            } catch (error) {
+                loading.remove();
+                addMessageToChat(`Error: ${error.message}`, 'error');
+            }
+        }
+
+        // Event listeners
+        sendButton.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+        hideButton.addEventListener('click', () => {
+            widget.style.display = 'none';
+        });
+
+        // Initial message
+        addMessageToChat("Hello! I'm your book assistant. Ask me anything about the book or select text and ask!", 'bot');
+    </script>
+</body>
+
+</html>

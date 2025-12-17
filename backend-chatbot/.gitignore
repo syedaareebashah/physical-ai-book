@@ -1,0 +1,66 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+.ENV
+.venv/
+.ENV/
+.ENV.bak/
+.env.bak/
+.ENV.example/
+.env.example/
+
+# Virtual Environment
+pyenv/
+.Python/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+*.out
+
+# Environment
+.env
+.env.local
+.env.dev
+.env.prod
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Coverage
+.coverage
+htmlcov/
+.coverage.xml
+.pytest_cache/
+
+# Distribution
+dist/
+build/
+*.egg-info/
+*.egg
+
+# Documentation
+docs/_build/
+
+# Local config
+config.local
+coverage.xml
+*.gcda
+*.gcno
+*.gcov
