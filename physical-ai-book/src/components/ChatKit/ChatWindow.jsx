@@ -16,8 +16,11 @@ const ChatWindow = ({
   return (
     <div className="chatkit-container">
       <div className="chatkit-header">
-        <h3>AI Assistant</h3>
-        <p>Ask me anything about Physical AI & Humanoid Robotics</p>
+        <div className="chatkit-header-icon">🤖</div>
+        <div>
+          <h3>AI Assistant</h3>
+          <p>Ask me anything about Physical AI & Humanoid Robotics</p>
+        </div>
       </div>
 
       {/* Display selected text if available */}

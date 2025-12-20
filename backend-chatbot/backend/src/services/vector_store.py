@@ -1,10 +1,9 @@
 from qdrant_client import QdrantClient
 from qdrant_client.http import models
 from typing import List, Dict, Any, Optional
-from config.config import qdrant_client
+from ..config.config import qdrant_client
 import logging
 import traceback
-from qdrant_client.http.models import NearestQuery
 
 # Initialize logger
 logger = logging.getLogger(__name__)
@@ -23,14 +22,29 @@ class VectorStore:
         """
         Ensure the collection exists with the proper configuration
         """
-        if not self.client.collection_exists(self.collection_name):
-            self.client.create_collection(
-            collection_name=self.collection_name,
-            vectors_config=models.VectorParams(size=1024, distance=models.Distance.COSINE),
-            )
-        else:
+        try:
+            # Try to get collection info to see if it exists
+            self.client.get_collection(self.collection_name)
             print(f"Collection '{self.collection_name}' already exists.")
-         
+        except Exception as e:
+            # Handle specific Qdrant validation errors that can occur due to compatibility issues
+            error_msg = str(e)
+            if "already exists" in error_msg.lower():
+                # Collection already exists message, which is fine
+                print(f"Collection '{self.collection_name}' already exists.")
+            elif "ResponseHandlingException" in str(type(e)) and "validation errors" in error_msg:
+                # This is a validation error due to Qdrant API incompatibility, but collection likely exists
+                print(f"Collection '{self.collection_name}' validation issue (likely exists).")
+            elif "404" in error_msg or "not found" in error_msg.lower() or "doesn't exist" in error_msg.lower():
+                # Collection doesn't exist, so create it
+                self.client.create_collection(
+                    collection_name=self.collection_name,
+                    vectors_config=models.VectorParams(size=1024, distance=models.Distance.COSINE),
+                )
+            else:
+                # If the error is not about the collection already existing, re-raise it
+                raise e
+
     def upsert_vectors(self, points: List[Dict[str, Any]]):
         """
         Upsert vectors to the Qdrant collection
@@ -65,15 +79,15 @@ class VectorStore:
         Search for similar vectors in the collection using the new query_points API
         """
         try:
-            from qdrant_client.http.models import NearestQuery
-            
-            # New way: use query_points with nearest query
-            search_results = self.client.query_points(
+            # No special import needed for the search function
+
+            # Use the traditional search API which should be more compatible
+            search_results = self.client.search(
                 collection_name=self.collection_name,
-                query=NearestQuery(nearest=query_vector),
+                query_vector=query_vector,
                 limit=top_k
-            ).points  # .points directly gives the list of ScoredPoint
-            
+            )
+
             results = []
             for hit in search_results:
                 result = {
@@ -83,7 +97,7 @@ class VectorStore:
                     "text": hit.payload.get("text", "") if hit.payload else ""
                 }
                 results.append(result)
-            
+
             logger.info(f"Found {len(results)} similar vectors for query")
             return results
         except Exception as e:

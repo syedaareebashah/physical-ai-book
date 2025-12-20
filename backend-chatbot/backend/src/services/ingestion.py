@@ -2,10 +2,10 @@ import os
 import tempfile
 from typing import List, Dict, Any, Optional
 import pdfplumber
-from config.config import cohere_client, SessionLocal, Base
-from models.chunk_metadata import ChunkMetadata
-from services.vector_store import VectorStore
-from utils.text_splitter import split_text
+from ..config.config import cohere_client, SessionLocal, Base
+from ..models.chunk_metadata import ChunkMetadata
+from .vector_store import VectorStore
+from ..utils.text_splitter import split_text
 import logging
 from io import BytesIO
 import traceback

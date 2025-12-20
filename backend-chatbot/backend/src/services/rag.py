@@ -1,6 +1,6 @@
 from typing import List, Dict, Any, Optional
-from config.config import cohere_client
-from services.vector_store import VectorStore
+from ..config.config import cohere_client
+from .vector_store import VectorStore
 from pydantic import BaseModel
 import logging
 import traceback

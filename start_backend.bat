@@ -1,11 +1,11 @@
 @echo off
 echo Starting RAG Chatbot Backend Server...
 
-REM Navigate to the chatbot-backend directory
-cd /d "%~dp0chatbot-backend"
+REM Navigate to the backend-chatbot directory and then to its backend subdirectory
+cd /d "%~dp0backend-chatbot\backend"
 
 REM Start the FastAPI server
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+python run_server.py
 
 echo Server stopped.
 pause

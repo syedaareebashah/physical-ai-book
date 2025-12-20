@@ -30,7 +30,10 @@ const InputArea = ({
           {isLoading ? (
             <span className="chatkit-loading-spinner">●●●</span>
           ) : (
-            'Send'
+            <>
+              <span>Send</span>
+              <span>→</span>
+            </>
           )}
         </button>
       </div>

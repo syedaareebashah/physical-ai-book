@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add RTL support for Urdu text */
+[dir="rtl"] {
+  text-align: right;
+  direction: rtl;
+}
+
+.urdu-text {
+  font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Urdu Typesetting', serif;
+  text-align: right;
+  direction: rtl;
+}
+
+/* Fallback for browsers that don't support Urdu fonts */
+.urdu-text-fallback {
+  text-align: right;
+  direction: rtl;
+  font-size: 1.1em;
+  line-height: 1.8;
+}

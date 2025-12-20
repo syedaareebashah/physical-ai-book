@@ -30,13 +30,20 @@ The system consists of:
 
 ### Backend Setup
 
-1. Navigate to the chatbot-backend directory:
+1. Navigate to the backend-chatbot directory:
    ```bash
-   cd chatbot-backend
+   cd backend-chatbot
    ```
 
-2. Install dependencies:
+2. **Important**: Due to a compatibility issue with Python 3.13, please use Python 3.11 or 3.12 for the backend. You can use the setup script:
    ```bash
+   setup_backend_env.bat
+   ```
+   Or manually create a virtual environment with Python 3.11 or 3.12:
+   ```bash
+   python3.11 -m venv venv_backend  # or python3.12
+   venv_backend\Scripts\activate
+   pip install --upgrade pip
    pip install -r requirements.txt
    ```
 
@@ -50,10 +57,8 @@ The system consists of:
 
 4. Start the backend server:
    ```bash
-   # From the root project directory
-   python start_backend.py
-   # Or from within chatbot-backend:
-   uvicorn app.main:app --reload
+   cd backend  # Navigate to the backend subdirectory
+   python run_server.py
    ```
 
 ### Populate Book Content
