@@ -6,8 +6,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Physical AI & Humanoid Robotics',
-  tagline: 'AI Systems in the Physical World | Embodied Intelligence | Bridging Digital Brains with Physical Bodies',
-  favicon: 'img/robot-icon.png',
+  tagline: 'AI Systems in the Physical World | Embodied Intelligence',
+  favicon: 'img/icono.svg',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -62,6 +62,22 @@ const config: Config = {
     ],
   ],
 
+  stylesheets: [
+    // Add the new editorial theme CSS
+    {
+      href: '/css/editorial-theme.css',
+      type: 'text/css',
+      crossorigin: undefined,
+    },
+    // Google Fonts for the editorial typography
+    {
+      href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;500;600;700&display=swap',
+      rel: 'stylesheet',
+      type: 'text/css',
+      crossorigin: undefined,
+    },
+  ],
+
   themeConfig: {
     // Replace with your project's social card
     image: 'img/physical-ai-social-card.jpg',
@@ -88,6 +104,16 @@ const config: Config = {
           docId: 'intro',
           position: 'left',
           label: 'Getting Started',
+        },
+        {
+          to: '/chat',
+          label: 'AI Assistant',
+          position: 'right',
+        },
+        {
+          to: '/cyberpunk-demo',
+          label: 'Cyberpunk Demo',
+          position: 'right',
         },
       ],
     },

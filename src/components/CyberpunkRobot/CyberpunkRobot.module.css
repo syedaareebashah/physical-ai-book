@@ -1,0 +1,297 @@
+.robotContainer {
+  position: relative;
+  display: inline-block;
+  perspective: 1000px;
+  margin: 1rem;
+}
+
+.robot {
+  position: relative;
+  width: var(--robot-width, 80px);
+  height: var(--robot-height, 120px);
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.robotAnimated .robot {
+  animation: float 6s ease-in-out infinite;
+}
+
+.robotSmall {
+  --robot-width: 60px;
+  --robot-height: 90px;
+}
+
+.robotMedium {
+  --robot-width: 80px;
+  --robot-height: 120px;
+}
+
+.robotLarge {
+  --robot-width: 120px;
+  --robot-height: 180px;
+}
+
+.robotPrimary {
+  --robot-color: var(--ifm-color-primary);
+  --robot-glow: 0 0 15px var(--ifm-color-primary);
+}
+
+.robotSecondary {
+  --robot-color: var(--cyber-cyan);
+  --robot-glow: 0 0 15px var(--cyber-cyan);
+}
+
+.robotAccent {
+  --robot-color: var(--cyberpunk-accent);
+  --robot-glow: 0 0 15px var(--cyberpunk-accent);
+}
+
+.robotPart {
+  position: absolute;
+  background: var(--robot-color);
+  border: 1px solid var(--robot-color);
+  box-shadow: var(--robot-glow);
+  border-radius: 4px;
+}
+
+.robotHead {
+  width: calc(var(--robot-width) * 0.7);
+  height: calc(var(--robot-height) * 0.25);
+  top: 0;
+  left: calc(var(--robot-width) * 0.15);
+  border-radius: 12px 12px 8px 8px;
+  z-index: 10;
+}
+
+.robotBody {
+  width: var(--robot-width);
+  height: calc(var(--robot-height) * 0.4);
+  top: calc(var(--robot-height) * 0.25);
+  left: 0;
+  border-radius: 6px;
+}
+
+.robotBodyDetails {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 30%;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.robotArm {
+  width: calc(var(--robot-width) * 0.15);
+  height: calc(var(--robot-height) * 0.35);
+  top: calc(var(--robot-height) * 0.3);
+  border-radius: 6px;
+}
+
+.robotArmLeft {
+  left: calc(var(--robot-width) * -0.1);
+  transform-origin: top center;
+  animation: armSwingLeft 3s ease-in-out infinite;
+}
+
+.robotArmRight {
+  left: calc(var(--robot-width) * 0.85);
+  transform-origin: top center;
+  animation: armSwingRight 3s ease-in-out infinite;
+}
+
+.robotLeg {
+  width: calc(var(--robot-width) * 0.18);
+  height: calc(var(--robot-height) * 0.25);
+  top: calc(var(--robot-height) * 0.65);
+  border-radius: 0 0 6px 6px;
+}
+
+.robotLegLeft {
+  left: calc(var(--robot-width) * 0.25);
+  animation: legMoveLeft 2s ease-in-out infinite;
+}
+
+.robotLegRight {
+  left: calc(var(--robot-width) * 0.57);
+  animation: legMoveRight 2s ease-in-out infinite;
+}
+
+.robotEye {
+  width: calc(var(--robot-width) * 0.1);
+  height: calc(var(--robot-width) * 0.1);
+  top: calc(var(--robot-height) * 0.08);
+  background: #000;
+  border: none;
+  box-shadow: none;
+  border-radius: 50%;
+  animation: eyeBlink 4s infinite;
+}
+
+.robotEyeLeft {
+  left: calc(var(--robot-width) * 0.25);
+}
+
+.robotEyeRight {
+  left: calc(var(--robot-width) * 0.45);
+}
+
+.robotAntenna {
+  width: 2px;
+  height: calc(var(--robot-height) * 0.1);
+  top: calc(var(--robot-height) * -0.1);
+  left: calc(var(--robot-width) * 0.48);
+  background: var(--robot-color);
+  border-radius: 50% 50% 0 0;
+}
+
+.robotHand {
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(var(--robot-width) * 0.18);
+  height: calc(var(--robot-width) * 0.1);
+  background: var(--robot-color);
+  border-radius: 50%;
+  border: 1px solid var(--robot-color);
+  box-shadow: var(--robot-glow);
+}
+
+.robotGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, var(--robot-color) 0%, transparent 70%);
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: -1;
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+.robotScanLines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 42, 109, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 100% 4px;
+  animation: scanLines 3s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.robot--hover {
+  transform: translateY(-10px) scale(1.1) rotateX(10deg);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotateX(5deg); }
+  50% { transform: translateY(-10px) rotateX(-5deg); }
+}
+
+@keyframes armSwingLeft {
+  0%, 100% { transform: rotate(5deg); }
+  50% { transform: rotate(-15deg); }
+}
+
+@keyframes armSwingRight {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(15deg); }
+}
+
+@keyframes legMoveLeft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes legMoveRight {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+@keyframes eyeBlink {
+  0%, 45%, 55%, 100% { transform: scaleY(1); }
+  48%, 52% { transform: scaleY(0.1); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes scanLines {
+  0% { transform: translateY(-4px); }
+  100% { transform: translateY(calc(100% - 4px)); }
+}
+
+/* Interactive effects */
+.robotContainer:hover .robot {
+  transform: translateY(-15px) scale(1.1) rotateX(10deg) rotateY(5deg);
+}
+
+.robotContainer:hover .robotGlow {
+  animation: glowPulse 1s ease-in-out infinite;
+}
+
+.robotContainer:hover .robotScanLines {
+  animation-duration: 1s;
+}
+
+/* Cyberpunk grid background for robot */
+.robotContainer::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background:
+    linear-gradient(rgba(255, 42, 109, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 42, 109, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: -2;
+  opacity: 0.5;
+}
+
+/* Robot hover glow effect */
+.robotContainer:hover::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border: 1px solid var(--robot-color);
+  border-radius: 50%;
+  box-shadow: 0 0 30px var(--robot-color);
+  opacity: 0.3;
+  z-index: -1;
+  animation: ringPulse 2s ease-in-out infinite;
+}
+
+@keyframes ringPulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.1); opacity: 0.5; }
+}
+
+/* Robot interaction cursor */
+.robotContainer {
+  cursor: pointer;
+}
+
+.robotContainer:active {
+  transform: scale(0.95);
+}
