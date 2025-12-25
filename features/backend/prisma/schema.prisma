@@ -1,0 +1,54 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                  String   @id @default(cuid())
+  email               String   @unique
+  password            String
+  softwareExperience  String?  // beginner, intermediate, advanced
+  programmingLanguages String[] // Known programming languages
+  devExperienceYears  Int?     // Years of development experience
+  hardwareSpecs       Json?    // Hardware specifications as JSON object
+  developmentFocus    String[] // Development areas of focus
+  sessions            Session[]
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model Chapter {
+  id                String   @id @default(cuid())
+  title             String
+  content           String
+  personalizedContent Json?  // Cache of personalized versions
+  urduContent       String?  // Urdu translation of content
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model Subagent {
+  id          String   @id @default(cuid())
+  name        String
+  type        String   // personalization, translation, content-summary, other
+  description String?
+  parameters  Json?    // Configuration parameters for the subagent
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

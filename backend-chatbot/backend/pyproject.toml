@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "integrated-rag-chatbot"
+version = "1.0.0"
+description = "A RAG-based chatbot for interacting with book content"
+authors = [{name = "Developer", email = "developer@example.com"}]
+dependencies = [
+    "fastapi>=0.104.1",
+    "uvicorn[standard]>=0.24.0",
+    "cohere>=4.4.3",
+    "qdrant-client>=1.7.3",
+    "sqlalchemy>=2.0.23",
+    "psycopg2-binary>=2.9.9",
+    "python-dotenv>=1.0.0",
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.1.0",
+    "pypdf>=3.17.4",
+    "langchain-text-splitters>=0.0.1",
+    "pdfplumber>=0.10.4",
+    "python-multipart>=0.0.6",
+    "pytest>=7.4.3",
+    "requests>=2.31.0"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[project.optional-dependencies]
+dev = ["pytest", "black", "flake8", "mypy"]

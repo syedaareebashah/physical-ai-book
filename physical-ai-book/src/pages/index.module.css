@@ -1,0 +1,632 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.cyberpunkHero {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  color: var(--cyberpunk-light-text);
+  background-size: 400% 400%;
+  animation: cyberGradientShift 10s ease infinite;
+  transition: all 0.3s ease;
+  border: var(--cyberpunk-border);
+  box-shadow: var(--cyberpunk-border-glow);
+  position: relative;
+  z-index: 1;
+}
+
+.cyberpunkHero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: -1;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes cyberGradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(40px, 40px); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.cyberpunk-button {
+  border-radius: 4px !important;
+  font-family: var(--ifm-font-family-base) !important;
+  font-weight: bold !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  position: relative !important;
+  overflow: hidden !important;
+  transition: all 0.3s ease !important;
+  border: var(--cyberpunk-border) !important;
+  box-shadow: var(--cyberpunk-border-glow) !important;
+  background: var(--cyberpunk-gradient-primary) !important;
+  color: #000 !important;
+  text-shadow: none !important;
+  padding: 1rem 2rem !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  border-radius: 50px !important;
+  transition: all 0.3s ease !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), var(--cyberpunk-border-glow) !important;
+}
+
+.cyberpunk-button:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), var(--cyberpunk-border-glow) !important;
+  text-decoration: none !important;
+  background: var(--cyberpunk-gradient-secondary) !important;
+}
+
+.cyberpunk-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 255, 65, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.cyberpunk-button:hover::before {
+  left: 100%;
+}
+
+.cyberpunkRobotContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  perspective: 1000px;
+}
+
+.button {
+  margin: 0.5rem;
+}
+
+.heroContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.heroText {
+  flex: 1;
+  text-align: left;
+}
+
+.heroText h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 20px var(--ifm-color-primary);
+  font-weight: 700;
+  animation: fadeIn 1s ease-in-out, textGlow 2s ease-in-out infinite alternate;
+  color: var(--ifm-color-primary);
+  font-family: var(--ifm-font-family-base);
+}
+
+@keyframes textGlow {
+  from { text-shadow: 0 0 10px var(--ifm-color-primary); }
+  to { text-shadow: 0 0 30px var(--ifm-color-primary), 0 0 40px var(--ifm-color-primary); }
+}
+
+.heroText .hero__subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+  font-weight: 500;
+  animation: fadeIn 1.5s ease-in-out;
+  color: var(--cyberpunk-light-text);
+  text-shadow: 0 0 10px rgba(224, 224, 224, 0.3);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.subtitle {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.heroImage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 300px;
+}
+
+.heroImageImg {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  animation: float 6s ease-in-out infinite;
+  display: block;
+  max-height: 300px;
+}
+
+.cyberpunkRobotOverlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hide the old robot container since we're using the overlay */
+.cyberpunkRobotContainer {
+  display: none;
+}
+
+/* Cyberpunk features section styling */
+.featuresSection {
+  padding: 4rem 0;
+  background: var(--cyberpunk-dark-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.featuresSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    linear-gradient(rgba(0, 255, 65, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 65, 0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: -1;
+  animation: gridMove 25s linear infinite;
+}
+
+.featureCard {
+  background: rgba(30, 30, 30, 0.9);
+  border-radius: 12px;
+  box-shadow: var(--cyberpunk-glow);
+  transition: all 0.3s ease;
+  height: 100%;
+  text-align: center;
+  border: var(--cyberpunk-border);
+  overflow: hidden;
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+.featureCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--cyberpunk-gradient-primary);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.featureCard:hover::before {
+  transform: scaleX(1);
+}
+
+.featureCard:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: var(--cyberpunk-border-glow), 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.featureCard h3 {
+  color: var(--ifm-color-primary);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+}
+
+.featureCard p {
+  color: var(--cyberpunk-light-text);
+  line-height: 1.6;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.robotVisualization {
+  width: 300px;
+  height: 300px;
+  position: relative;
+}
+
+.robotCircle {
+  width: 150px;
+  height: 150px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 75px;
+  left: 75px;
+  animation: pulse 2s infinite;
+}
+
+.aiBrain {
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid #fff;
+  border-radius: 10px;
+  position: absolute;
+  top: 110px;
+  left: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.connections {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.featuresSection {
+  padding: 4rem 0;
+  background: #f8f9fa;
+}
+
+.featureCard {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+  text-align: center;
+  border: 1px solid rgba(102, 126, 234, 0.1);
+  overflow: hidden; /* To keep the image within the card's rounded corners */
+}
+
+.featureCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.featureCard h3 {
+  color: #667eea;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.featureCard p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.featureIcon {
+  margin-bottom: 1rem;
+}
+
+.featureIcon img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.featureCardContent {
+  padding: 2rem;
+}
+
+.cardHover {
+  transition: all 0.3s ease;
+}
+
+.cardHover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Consistent spacing for sections */
+.featuresSection {
+  padding: 4rem 0;
+}
+
+.ctaSection {
+  padding: 4rem 0;
+}
+
+/* Consistent margins for elements */
+.featureCard h3 {
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.featureCard p {
+  margin-bottom: 0;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* Dark mode overrides for feature cards */
+[data-theme='dark'] .featureCard {
+  background: rgba(45, 45, 45, 0.85);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  color: white;
+}
+
+[data-theme='dark'] .featureCard h3 {
+  color: #8294f0;
+}
+
+[data-theme='dark'] .featureCard p {
+  color: #ccc;
+}
+
+.ctaSection {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  color: var(--cyberpunk-light-text);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-top: var(--cyberpunk-border);
+  box-shadow: var(--cyberpunk-border-glow);
+}
+
+.ctaSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    linear-gradient(rgba(0, 255, 65, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 65, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: -1;
+  animation: gridMove 30s linear infinite;
+}
+
+.ctaSection h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 20px var(--ifm-color-primary);
+  font-weight: 700;
+  color: var(--ifm-color-primary);
+  animation: textGlow 2s ease-in-out infinite alternate;
+}
+
+.ctaSection p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  line-height: 1.6;
+  font-weight: 500;
+  color: var(--cyberpunk-light-text);
+  text-shadow: 0 0 10px rgba(224, 224, 224, 0.3);
+}
+
+/* Override default button styles with cyberpunk variants */
+.button--primary {
+  background: var(--cyberpunk-gradient-primary) !important;
+  color: #000 !important;
+  border: var(--cyberpunk-border) !important;
+  padding: 1rem 2rem !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  border-radius: 50px !important;
+  transition: all 0.3s ease !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), var(--cyberpunk-border-glow) !important;
+  font-family: var(--ifm-font-family-base) !important;
+}
+
+.button--primary:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), var(--cyberpunk-border-glow) !important;
+  text-decoration: none !important;
+  background: var(--cyberpunk-gradient-secondary) !important;
+}
+
+.button--secondary {
+  background: transparent !important;
+  color: var(--ifm-color-primary) !important;
+  border: var(--cyberpunk-border) !important;
+  padding: 1rem 2rem !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  border-radius: 50px !important;
+  transition: all 0.3s ease !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  box-shadow: var(--cyberpunk-border-glow) !important;
+  font-family: var(--ifm-font-family-base) !important;
+}
+
+.button--secondary:hover {
+  background: rgba(0, 255, 65, 0.1) !important;
+  transform: translateY(-5px) !important;
+  box-shadow: var(--cyberpunk-border-glow) !important;
+  text-decoration: none !important;
+}
+
+@media screen and (max-width: 1024px) {
+  .heroContent {
+    gap: 1.5rem;
+  }
+
+  .featureCard {
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .heroContent {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .heroText {
+    text-align: center;
+  }
+
+  .buttons {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .heroText h1 {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .featureCard {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+  }
+
+  .row {
+    margin: 0 !important;
+  }
+}
+
+/* Animations for interactive elements */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.featureCard {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.featureCard:nth-child(1) { animation-delay: 0.1s; }
+.featureCard:nth-child(2) { animation-delay: 0.2s; }
+.featureCard:nth-child(3) { animation-delay: 0.3s; }
+.featureCard:nth-child(4) { animation-delay: 0.4s; }
+.featureCard:nth-child(5) { animation-delay: 0.5s; }
+
+/* Gradient text effect */
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card-hover:hover {
+  transform: scale(1.02);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}

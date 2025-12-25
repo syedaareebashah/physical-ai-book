@@ -1,0 +1,67 @@
+# Dependencies
+node_modules/
+jspm_packages/
+
+# Production builds
+dist/
+build/
+.next/
+.nuxt/
+out/
+
+# Environment variables
+.env*
+!.env.example
+
+# Testing
+coverage/
+.nyc_output/
+junit.xml
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Runtime
+npm/
+tmp/
+temp/
+
+# Database
+*.db
+*.db-journal
+
+# Backend specific
+backend/node_modules/
+backend/dist/
+backend/build/
+
+# Frontend specific
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/.next/
+frontend/.nuxt/
+frontend/out/
+
+# Database migrations (if using Prisma)
+prisma/migrations/
+prisma/schema.prisma
