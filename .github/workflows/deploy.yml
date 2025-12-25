@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 18
@@ -19,18 +20,15 @@ jobs:
           cache-dependency-path: physical-ai-book/package-lock.json
 
       - name: Install dependencies
-        run: |
-          cd physical-ai-book
-          npm ci
+        working-directory: ./physical-ai-book
+        run: npm ci
 
       - name: Build website
-        run: |
-          cd physical-ai-book
-          npm run build
+        working-directory: ./physical-ai-book
+        run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./physical-ai-book/build
-          # The project is in a subdirectory, so build output is also in subdirectory
