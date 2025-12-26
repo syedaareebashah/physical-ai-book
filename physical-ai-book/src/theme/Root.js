@@ -10,8 +10,8 @@ const ChatbotWidget = () => {
 
   // Determine API endpoint based on environment
   const apiEndpoint = process.env.NODE_ENV === 'production'
-    ? 'https://your-backend-url'  // Replace with actual production URL
-    : 'http://localhost:8000/api'; // Include /api path as expected by backend
+    ? 'https://areebashah-rag-chatbot.hf.space'  // Your deployed backend URL
+    : 'http://localhost:8000'; // Local development backend URL
 
   // Track if there are new messages to show unread indicator
   useEffect(() => {
