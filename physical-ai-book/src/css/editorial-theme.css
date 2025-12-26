@@ -308,7 +308,7 @@ blockquote {
 }
 
 blockquote::before {
-  content: """;
+  content: "";
   font-family  var(--editorial-font-display);
   font-size: 3rem;
   position: absolute;
